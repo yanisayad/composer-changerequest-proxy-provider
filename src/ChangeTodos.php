@@ -47,6 +47,24 @@ class ChangeTodos implements \JsonSerializable
         $this->status = "pending";
     }
 
+    /**
+     * Fills itself from array
+     *
+     * @param  array  $change_request
+     *
+     * @return self
+     */
+    public function fromArray(array $change_request)
+    {
+        foreach ($change_request as $field => $value) {
+            if (true === property_exists($this, $field)) {
+                $this->{$field} = $value;
+            }
+        }
+
+        return $this;
+    }
+
     public function toArray()
     {
         return [

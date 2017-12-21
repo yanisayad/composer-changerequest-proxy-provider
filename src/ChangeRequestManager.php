@@ -44,11 +44,16 @@ class ChangeRequestManager
     public function findOneByQueryString($query)
     {
         $matching = $this->findByQueryString($query, 0, 1);
+
         if (0 === count($matching["hits"])) {
             return null;
         }
 
-        return $matching["hits"][0];
+        $change_request = new ChangeTodos();
+
+        $change_request->fromArray($matching["hits"][0]);
+
+        return $change_request;
     }
 
     public function validate(ChangeTodos $change_request) {
