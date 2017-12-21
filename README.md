@@ -37,7 +37,6 @@ class EtnaConfig implements ServiceProviderInterface
     {
         ...
 
-        $my_controller = new ConversationController();
         $app->register(new ETNAProvider\ChangeRequestProxy());
 
         ...
