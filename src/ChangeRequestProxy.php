@@ -1,6 +1,6 @@
 <?php
 
-namespace ETNA\Silex\Provider\ConversationProxy;
+namespace ETNA\Silex\Provider\ChangeRequestProxy;
 
 use GuzzleHttp\Client;
 
@@ -9,13 +9,6 @@ use Pimple\ServiceProviderInterface;
 
 class ChangeRequestProxy implements ServiceProviderInterface
 {
-    private $controller_instance = null;
-
-    public function __construct($controller_instance = null)
-    {
-        $this->controller_instance = $controller_instance;
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -38,7 +31,5 @@ class ChangeRequestProxy implements ServiceProviderInterface
         $app["changerequest"] = function ($app) {
             return new ChangeRequestManager($app);
         };
-
-        $app->mount("/", $this->controller_instance);
     }
 }

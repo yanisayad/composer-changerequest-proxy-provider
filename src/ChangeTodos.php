@@ -47,25 +47,6 @@ class ChangeTodos implements \JsonSerializable
         $this->status = "pending";
     }
 
-    /**
-     * Fills itself from array
-     *
-     * @param  array  $conversation
-     *
-     * @return self
-     */
-    public function fromArray(array $conversation)
-    {
-        // $this->save_actions = [];
-        foreach ($conversation as $field => $value) {
-            if (true === property_exists($this, $field)) {
-                $this->{$field} = $value;
-            }
-        }
-
-        return $this;
-    }
-
     public function toArray()
     {
         return [
@@ -88,6 +69,44 @@ class ChangeTodos implements \JsonSerializable
     }
 
 // ------ Getters ------
+
+    /**
+     * Gets the value of Id.
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get create date of conversation
+     *
+     * @return \DateTime|null|string
+     */
+    public function getCreatedAt($format = null)
+    {
+        if (null === $format || null === $this->created_at || is_string($this->created_at)) {
+            return $this->created_at;
+        }
+
+        return $this->created_at->format($format);
+    }
+
+    /**
+     * Get update date of conversation
+     *
+     * @return \DateTime|null|string
+     */
+    public function getUpdatedAt($format = null)
+    {
+        if (null === $format || null === $this->updated_at || is_string($this->updated_at)) {
+            return $this->updated_at;
+        }
+
+        return $this->updated_at->format($format);
+    }
 
     /**
      * Gets the value of Datas.

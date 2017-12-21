@@ -28,7 +28,7 @@
     "repositories": [
        {
            "type": "composer",
-           "url": "http://blu-composer.herokuapp.com"
+           "url": "https://blu-composer.herokuapp.com"
        }
    ]
 }

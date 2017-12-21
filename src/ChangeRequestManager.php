@@ -9,6 +9,8 @@ use Silex\Application;
 
 use Symfony\Component\HttpFoundation\Request;
 
+use ETNA\Silex\Provider\ChangeRequestProxy\ChangeTodos;
+
 class ChangeRequestManager
 {
     private $app;
@@ -22,7 +24,7 @@ class ChangeRequestManager
         $this->app = $app;
     }
 
-    public function findByQueryString($query, $from = 0, $size = 99999, $sort = "", $msg_query = "")
+    public function findByQueryString($query, $from = 0, $size = 99999, $sort = "")
     {
         $query    = urlencode($query);
         $response = $this->fireRequest("GET", "/search?q={$query}&from={$from}&size={$size}&sort={$sort}");
@@ -49,22 +51,31 @@ class ChangeRequestManager
         return $matching["hits"][0];
     }
 
+    public function validate(ChangeTodos $change_request) {
+        $body = [
+            "status" => "validate"
+        ];
+
+        $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
+
+        return $response;
+    }
+
+    public function invalidate(ChangeTodos $change_request) {
+        $body = [
+            "status" => "invalidate"
+        ];
+
+        $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
+
+        return $response;
+    }
+
     public function save(ChangeTodos $change_todos)
     {
-        $actions  = $change_todos->getSaveActions();
-        $response = null;
+        $body = $change_todos->toArray();
 
-        if ($actions === [["method" => "post", "route" => "/change_todos"]]) {
-            $body = $change_todos->toArray();
-            // if (false === isset($body["messages"][0])) {
-            //     return $this->app->abort(400, "Need content to create change_todos");
-            // }
-
-            // $body["metas"] = json_encode($body["metas"]);
-            $response = $this->fireRequest("POST", "/change_todos", $body);
-        } else {
-
-        }
+        $response = $this->fireRequest("POST", "/change_todos", $body);
 
         return $response;
     }
