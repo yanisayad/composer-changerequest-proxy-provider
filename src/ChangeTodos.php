@@ -99,7 +99,7 @@ class ChangeTodos implements \JsonSerializable
     }
 
     /**
-     * Get create date of conversation
+     * Get create date of change request
      *
      * @return \DateTime|null|string
      */
@@ -113,7 +113,7 @@ class ChangeTodos implements \JsonSerializable
     }
 
     /**
-     * Get update date of conversation
+     * Get update date of change request
      *
      * @return \DateTime|null|string
      */
