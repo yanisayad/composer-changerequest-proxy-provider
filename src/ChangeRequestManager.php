@@ -27,6 +27,7 @@ class ChangeRequestManager
     public function findByQueryString($query, $from = 0, $size = 99999, $sort = "")
     {
         $query    = urlencode($query);
+
         $response = $this->fireRequest("GET", "/search?q={$query}&from={$from}&size={$size}&sort={$sort}");
 
         $response["hits"] = array_map(
@@ -49,9 +50,7 @@ class ChangeRequestManager
             return null;
         }
 
-        $change_request = new ChangeTodos();
-
-        $change_request->fromArray($matching["hits"][0]);
+        $change_request = $matching["hits"][0];
 
         return $change_request;
     }
