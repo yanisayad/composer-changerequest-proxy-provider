@@ -44,6 +44,11 @@ class EtnaConfig implements ServiceProviderInterface
 }
 ```
 
+### Ajouter l'URL de l'api changerequest dans l'env:
+```
+putenv("CHANGEREQUEST_API_URL=http://changerequest-api.etna.localhost");
+```
+
 ### Le contenu de ce composant
 
 Ce provider met a disposition :
