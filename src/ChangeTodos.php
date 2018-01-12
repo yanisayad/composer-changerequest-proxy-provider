@@ -2,14 +2,6 @@
 
 namespace ETNA\Silex\Provider\ChangeRequestProxy;
 
-/**
- *
- * @Entity(repositoryClass="ChangeRequest\Repositories\ChangeTodosRepository")
- * @HasLifecycleCallbacks
- * @Table(
- *     name="change_todos"
- * )
- */
 class ChangeTodos implements \JsonSerializable
 {
     /* @var integer $id */
