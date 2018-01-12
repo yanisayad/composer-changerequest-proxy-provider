@@ -26,7 +26,7 @@ class ChangeRequestManager
 
     public function findByQueryString($query, $from = 0, $size = 99999, $sort = "")
     {
-        $query    = urlencode($query);
+        $query = urlencode($query);
 
         $response = $this->fireRequest("GET", "/search?q={$query}&from={$from}&size={$size}&sort={$sort}");
 
