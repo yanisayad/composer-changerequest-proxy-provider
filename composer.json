@@ -1,0 +1,34 @@
+{
+    "name": "etna/changerequest-proxy-provider",
+    "description": "A proxy to the changerequest api",
+    "keywords": ["changerequest", "proxy", "silex"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "ETNA",
+            "email": "dev@etna-alternance.net",
+            "homepage": "http://etna-alternance.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "silex/silex": "~2.0@dev",
+        "guzzlehttp/guzzle": "6.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "ETNA\\Silex\\Provider\\ChangeRequestProxy\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "repositories": [
+       {
+           "type": "composer",
+           "url": "https://blu-composer.herokuapp.com"
+       }
+   ]
+}
