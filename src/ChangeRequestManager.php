@@ -55,29 +55,41 @@ class ChangeRequestManager
         return $change_request;
     }
 
-    public function validate(ChangeTodos $change_request) {
+    public function validate(ChangeTodos $change_request, $response = null) {
         $body = [
             "status" => "validate"
         ];
 
+        if (null !== $response) {
+            $body["response"] = $response;
+        }
+
         $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
 
         return $response;
     }
 
-    public function invalidate(ChangeTodos $change_request) {
+    public function invalidate(ChangeTodos $change_request, $response = null) {
         $body = [
             "status" => "invalidate"
         ];
 
+        if (null !== $response) {
+            $body["response"] = $response;
+        }
+
         $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
 
         return $response;
     }
 
-    public function save(ChangeTodos $change_todos)
+    public function save(ChangeTodos $change_todos, $request = null)
     {
         $body = $change_todos->toArray();
+
+        if (null !== $request) {
+            $body["request"] = $request;
+        }
 
         $response = $this->fireRequest("POST", "/change_todos", $body);
 

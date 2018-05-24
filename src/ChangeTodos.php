@@ -34,6 +34,12 @@ class ChangeTodos implements \JsonSerializable
     /* @var array $last_value */
     private $last_value;
 
+    /* @var string $response */
+    private $request;
+
+    /* @var string $response */
+    private $response;
+
     public function __construct()
     {
         $this->status = "pending";
@@ -69,7 +75,9 @@ class ChangeTodos implements \JsonSerializable
             "user_validate_id" => $this->getUserValidateId(),
             "status"           => $this->getStatus(),
             "metas"            => $this->getMetas(),
-            "last_value"       => $this->getLastValue()
+            "last_value"       => $this->getLastValue(),
+            "request"          => $this->getRequest(),
+            "response"         => $this->getResponse()
         ];
     }
 
@@ -188,6 +196,26 @@ class ChangeTodos implements \JsonSerializable
         return $this->last_value;
     }
 
+    /**
+     * Gets the value of last value.
+     *
+     * @return string
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * Gets the value of last value.
+     *
+     * @return string
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
 // ------ Setters ------
 
     /**
@@ -286,5 +314,33 @@ class ChangeTodos implements \JsonSerializable
         $this->last_value = $last_value;
 
         return $this;
+    }
+
+    /**
+     * Sets the value of response.
+     *
+     * @param string $request
+     *
+     * @return self
+     */
+    public function setRequest($request)
+    {
+    $this->request = $request;
+
+    return $this;
+    }
+
+    /**
+     * Sets the value of response.
+     *
+     * @param string $response
+     *
+     * @return self
+     */
+    public function setResponse($response)
+    {
+    $this->response = $response;
+
+    return $this;
     }
 }
