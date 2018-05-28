@@ -35,10 +35,10 @@ class ChangeTodos implements \JsonSerializable
     private $last_value;
 
     /* @var string $response */
-    private $request;
+    private $request_comment;
 
     /* @var string $response */
-    private $response;
+    private $response_comment;
 
     public function __construct()
     {
@@ -76,8 +76,8 @@ class ChangeTodos implements \JsonSerializable
             "status"           => $this->getStatus(),
             "metas"            => $this->getMetas(),
             "last_value"       => $this->getLastValue(),
-            "request"          => $this->getRequest(),
-            "response"         => $this->getResponse()
+            "request_comment"  => $this->getRequestComment(),
+            "response_comment" => $this->getResponseComment()
         ];
     }
 
@@ -201,9 +201,9 @@ class ChangeTodos implements \JsonSerializable
      *
      * @return string
      */
-    public function getRequest()
+    public function getRequestComment()
     {
-        return $this->request;
+        return $this->request_comment;
     }
 
     /**
@@ -211,9 +211,9 @@ class ChangeTodos implements \JsonSerializable
      *
      * @return string
      */
-    public function getResponse()
+    public function getResponseComment()
     {
-        return $this->response;
+        return $this->response_comment;
     }
 
 // ------ Setters ------
@@ -317,30 +317,30 @@ class ChangeTodos implements \JsonSerializable
     }
 
     /**
-     * Sets the value of response.
+     * Sets the value of request_comment.
      *
-     * @param string $request
+     * @param string $request_comment
      *
      * @return self
      */
-    public function setRequest($request)
+    public function setRequestComment($request_comment)
     {
-    $this->request = $request;
+        $this->request_comment = $request_comment;
 
-    return $this;
+        return $this;
     }
 
     /**
-     * Sets the value of response.
+     * Sets the value of response_comment.
      *
-     * @param string $response
+     * @param string $response_comment
      *
      * @return self
      */
-    public function setResponse($response)
+    public function setResponseComment($response_comment)
     {
-    $this->response = $response;
+        $this->response_comment = $response_comment;
 
-    return $this;
+        return $this;
     }
 }
