@@ -34,10 +34,10 @@ class ChangeTodos implements \JsonSerializable
     /* @var array $last_value */
     private $last_value;
 
-    /* @var string $response */
+    /* @var string $request_comment */
     private $request_comment;
 
-    /* @var string $response */
+    /* @var string $response_comment */
     private $response_comment;
 
     public function __construct()
@@ -197,7 +197,7 @@ class ChangeTodos implements \JsonSerializable
     }
 
     /**
-     * Gets the value of last value.
+     * Gets the value of request comment.
      *
      * @return string
      */
@@ -207,7 +207,7 @@ class ChangeTodos implements \JsonSerializable
     }
 
     /**
-     * Gets the value of last value.
+     * Gets the value of response comment.
      *
      * @return string
      */
