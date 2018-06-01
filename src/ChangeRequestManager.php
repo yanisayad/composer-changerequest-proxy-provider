@@ -57,8 +57,13 @@ class ChangeRequestManager
 
     public function validate(ChangeTodos $change_request)
     {
-        $body           = $change_request->toArray();
-        $body["status"] = "validate";
+        $response_comment = null !== $change_request->getResponseComment() ?
+                            $change_request->getResponseComment() : null;
+
+        $body = [
+            "status"           => "validate",
+            "response_comment" => $response_comment
+        ];
 
         $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
 
@@ -67,8 +72,13 @@ class ChangeRequestManager
 
     public function invalidate(ChangeTodos $change_request)
     {
-        $body           = $change_request->toArray();
-        $body["status"] = "invalidate";
+        $response_comment = null !== $change_request->getResponseComment() ?
+                            $change_request->getResponseComment() : null;
+
+        $body = [
+            "status"           => "invalidate",
+            "response_comment" => $response_comment
+        ];
 
         $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
 
