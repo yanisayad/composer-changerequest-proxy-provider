@@ -34,6 +34,12 @@ class ChangeTodos implements \JsonSerializable
     /* @var array $last_value */
     private $last_value;
 
+    /* @var string $request_comment */
+    private $request_comment;
+
+    /* @var string $response_comment */
+    private $response_comment;
+
     public function __construct()
     {
         $this->status = "pending";
@@ -69,7 +75,9 @@ class ChangeTodos implements \JsonSerializable
             "user_validate_id" => $this->getUserValidateId(),
             "status"           => $this->getStatus(),
             "metas"            => $this->getMetas(),
-            "last_value"       => $this->getLastValue()
+            "last_value"       => $this->getLastValue(),
+            "request_comment"  => $this->getRequestComment(),
+            "response_comment" => $this->getResponseComment()
         ];
     }
 
@@ -188,6 +196,26 @@ class ChangeTodos implements \JsonSerializable
         return $this->last_value;
     }
 
+    /**
+     * Gets the value of request comment.
+     *
+     * @return string
+     */
+    public function getRequestComment()
+    {
+        return $this->request_comment;
+    }
+
+    /**
+     * Gets the value of response comment.
+     *
+     * @return string
+     */
+    public function getResponseComment()
+    {
+        return $this->response_comment;
+    }
+
 // ------ Setters ------
 
     /**
@@ -284,6 +312,34 @@ class ChangeTodos implements \JsonSerializable
     public function setLastValue($last_value)
     {
         $this->last_value = $last_value;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of request_comment.
+     *
+     * @param string $request_comment
+     *
+     * @return self
+     */
+    public function setRequestComment($request_comment)
+    {
+        $this->request_comment = $request_comment;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of response_comment.
+     *
+     * @param string $response_comment
+     *
+     * @return self
+     */
+    public function setResponseComment($response_comment)
+    {
+        $this->response_comment = $response_comment;
 
         return $this;
     }
