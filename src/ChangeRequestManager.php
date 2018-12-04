@@ -55,7 +55,8 @@ class ChangeRequestManager
         return $change_request;
     }
 
-    public function validate(ChangeTodos $change_request) {
+    public function validate(ChangeTodos $change_request)
+    {
         $body = [
             "status" => "validate"
         ];
@@ -65,12 +66,22 @@ class ChangeRequestManager
         return $response;
     }
 
-    public function invalidate(ChangeTodos $change_request) {
+    public function invalidate(ChangeTodos $change_request)
+    {
         $body = [
             "status" => "invalidate"
         ];
 
         $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
+
+        return $response;
+    }
+
+    public function cancel(ChangeTodos $change_todos)
+    {
+        $body = [];
+
+        $response = $this->fireRequest("PUT", "/change_todos/{$change_todos->getId()}/cancel", $body);
 
         return $response;
     }

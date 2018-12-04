@@ -60,16 +60,16 @@ class ChangeTodos implements \JsonSerializable
     public function toArray()
     {
         return [
-            "id"               => $this->getId(),
-            "datas"            => $this->getDatas(),
-            "request_type"     => $this->getRequestType(),
-            "created_at"       => $this->getCreatedAt('c'),
-            "updated_at"       => $this->getUpdatedAt('c'),
-            "user_request_id"  => $this->getUserRequestId(),
+            "id" => $this->getId(),
+            "datas" => $this->getDatas(),
+            "request_type" => $this->getRequestType(),
+            "created_at" => $this->getCreatedAt('c'),
+            "updated_at" => $this->getUpdatedAt('c'),
+            "user_request_id" => $this->getUserRequestId(),
             "user_validate_id" => $this->getUserValidateId(),
-            "status"           => $this->getStatus(),
-            "metas"            => $this->getMetas(),
-            "last_value"       => $this->getLastValue()
+            "status" => $this->getStatus(),
+            "metas" => $this->getMetas(),
+            "last_value" => $this->getLastValue()
         ];
     }
 
@@ -132,7 +132,7 @@ class ChangeTodos implements \JsonSerializable
      * Gets the value of request type.
      *
      * @return string
-    */
+     */
     public function getRequestType()
     {
         return $this->request_type;
