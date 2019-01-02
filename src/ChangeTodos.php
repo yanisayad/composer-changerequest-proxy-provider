@@ -140,7 +140,7 @@ class ChangeTodos implements \JsonSerializable
      * Gets the value of request type.
      *
      * @return string
-    */
+     */
     public function getRequestType()
     {
         return $this->request_type;

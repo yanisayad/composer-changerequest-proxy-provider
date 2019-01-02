@@ -62,9 +62,7 @@ class ChangeRequestManager
             "response_comment" => $change_request->getResponseComment()
         ];
 
-        $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
-
-        return $response;
+        return $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
     }
 
     public function invalidate(ChangeTodos $change_request)
@@ -74,25 +72,26 @@ class ChangeRequestManager
             "response_comment" => $change_request->getResponseComment()
         ];
 
-        $response = $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
+        return $this->fireRequest("PUT", "/change_todos/{$change_request->getId()}/status", $body);
+    }
 
-        return $response;
+    public function cancel(ChangeTodos $change_todos)
+    {
+        return $this->fireRequest("PUT", "/change_todos/{$change_todos->getId()}/cancel", []);
     }
 
     public function save(ChangeTodos $change_todos)
     {
         $body = $change_todos->toArray();
 
-        $response = $this->fireRequest("POST", "/change_todos", $body);
-
-        return $response;
+        return $this->fireRequest("POST", "/change_todos", $body);
     }
 
     private function fireRequest($method, $uri, $body = [])
     {
         $method = strtoupper($method);
 
-        if (false === in_array($method, ["GET", "POST", "PUT", "DELETE", "OPTIONS"])) {
+        if (!in_array($method, ["GET", "POST", "PUT", "DELETE", "OPTIONS"])) {
             return $this->app->abort(405, "ChangeRequestProxy can not fire request of method : {$method}");
         }
 
