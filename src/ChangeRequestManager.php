@@ -81,11 +81,7 @@ class ChangeRequestManager
 
     public function cancel(ChangeTodos $change_todos)
     {
-        $body = [];
-
-        $response = $this->fireRequest("PUT", "/change_todos/{$change_todos->getId()}/cancel", $body);
-
-        return $response;
+        return $this->fireRequest("PUT", "/change_todos/{$change_todos->getId()}/cancel", []);
     }
 
     public function save(ChangeTodos $change_todos)
